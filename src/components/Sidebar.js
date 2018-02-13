@@ -37,13 +37,13 @@ class Sidebar extends Component {
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.goRouter.bind(this)}>
           <Menu.Item key="1">
             <Icon type="pie-chart" />
-            <span>Option 1</span>
+            <span>Home</span>
           </Menu.Item>
           <Menu.Item key="2">
             <Icon type="desktop" />
-            <span>Option 2</span>
+            <span>About</span>
           </Menu.Item>
-          <SubMenu
+          {/* <SubMenu
             key="sub1"
             title={<span><Icon type="user" /><span>User</span></span>}
           >
@@ -61,7 +61,7 @@ class Sidebar extends Component {
           <Menu.Item key="9">
             <Icon type="file" />
             <span>File</span>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
       </Sider>
     );
