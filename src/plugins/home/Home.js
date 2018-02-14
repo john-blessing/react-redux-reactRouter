@@ -1,12 +1,18 @@
-import './Home.css';
+import './Home.css'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { Layout, Breadcrumb } from 'antd';
-const { Header, Content, Footer } = Layout;
+import { Layout, Breadcrumb, Button } from 'antd'
+const { Header, Content, Footer } = Layout
 
 class Home extends Component {
+  handleAdd(v){
+    this.props.addTodo('hello world')
+  }
+
   render() {
+    const { name } = this.props
     return (
       <Layout>
         <Header style={{ background: '#fff', padding: 0 }} />
@@ -16,7 +22,8 @@ class Home extends Component {
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-            Home
+            Home, {name}
+            <Button type="primary" onClick={this.handleAdd.bind(this)}>click me</Button>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
@@ -27,4 +34,14 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  name: state.todoApp.name
+})
+
+const mapDispatchToProps = dispath => ({
+  addTodo: (text) => {
+    dispath({type: 'SET_NAME', text})
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
