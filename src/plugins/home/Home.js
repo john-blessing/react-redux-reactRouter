@@ -1,6 +1,7 @@
 import './Home.css'
 
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {setName} from '../../store/action'
 
@@ -15,6 +16,10 @@ import {
 const {Header, Content, Footer} = Layout
 
 class Home extends Component {
+  static propTypes = {
+    name: PropTypes.string
+  }
+  
   constructor() {
     super();
     this.state = {
