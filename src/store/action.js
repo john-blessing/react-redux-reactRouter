@@ -1,5 +1,11 @@
 export const SET_NAME = 'SET_NAME'
 
-export function addTodo(text){
-    return {type: SET_NAME, text}
+// actions
+const receiveName = (text) => ({
+    type: SET_NAME,
+    text
+})
+
+export const setName = (value) => (dispatch, getState) => {
+    dispatch(receiveName(value))
 }

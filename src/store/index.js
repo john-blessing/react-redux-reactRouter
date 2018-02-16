@@ -3,20 +3,15 @@ import {
 } from 'redux'
 import * as types from './action'
 
-const userInfo = {
-    name: 'tony'
-}
 
-const todoApp = function (state = userInfo, action) {
+const userInfo = (state = {name: 'tony'}, action) => {
     switch (action.type) {
         case types.SET_NAME:
-            return Object.assign({}, state, {
-                name: action.text
-            })
+            return {...state, ...{ name: action.text }}
         default:
             return state;
     }
 }
 
 
-export default combineReducers({ todoApp })
+export default combineReducers({ userInfo })
