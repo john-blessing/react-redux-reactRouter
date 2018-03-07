@@ -26,6 +26,13 @@ class Home extends Component {
       name: ''
     }
   }
+  componentWillMount(){
+    console.log('==>enter will mount')
+  }
+
+  componentDidMount(){
+    console.log('==>enter did mount')
+  }
 
   handleAdd(v) {
     // this.props.setName('hello world')

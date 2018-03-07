@@ -6,6 +6,7 @@ import { Layout, Breadcrumb } from 'antd';
 const { Header, Content, Footer } = Layout;
 
 class About extends Component {
+
   render() {
     return (
       <Layout>
