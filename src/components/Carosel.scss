@@ -1,0 +1,13 @@
+.carosel{
+    display: flex;
+    justify-content: space-between;
+    .carosel-item{
+        width: 30%;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        float: left;
+        background: #eee;
+        border: 1px solid #ccc;
+    }
+}

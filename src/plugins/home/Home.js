@@ -4,14 +4,15 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {setName} from '../../store/action'
+import Carosel from "../../components/Carosel"
+import Utils from '../../utils/Utils'
 
 import {
   Layout,
   Breadcrumb,
   Button,
   Input,
-  Row,
-  Col
+  Row
 } from 'antd'
 const {Header, Content, Footer} = Layout
 
@@ -26,24 +27,19 @@ class Home extends Component {
       name: ''
     }
   }
-  componentWillMount(){
-    console.log('==>enter will mount')
-  }
-
-  componentDidMount(){
-    console.log('==>enter did mount')
-  }
-
-  handleAdd(v) {
-    // this.props.setName('hello world')
-  }
 
   handleChange(event) {
     this.setState({name: event.target.value})
   }
 
+  handleClick(v){
+    // console.log(setName)
+    // setName('hello world');
+    this.props.setName('hello world')
+  }
+
   render() {
-    const {name, setName} = this.props
+    const {name} = this.props
     return (
       <Layout>
         <Header style={{
@@ -59,22 +55,15 @@ class Home extends Component {
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
-          <Input
-            placeholder="Basic usage"
-            value={this.state.name}
-            onChange={this
-            .handleChange
-            .bind(this)}/>
           <Row
             style={{
-            padding: 24,
-            background: '#fff',
-            minHeight: 360
-          }}>
-            <Row>Home, {name}</Row>
-            <Row>
-              <Button type="primary" onClick={() => setName(this.state.name)}>click me</Button>
-            </Row>
+              padding: 24,
+              background: '#fff',
+              minHeight: 360
+            }}>
+            <Carosel />
+            <p>{name}</p>
+            <Button onClick={this.handleClick.bind(this)}>click</Button>
           </Row>
         </Content>
         <Footer style={{
