@@ -3,17 +3,9 @@ import './Carosel.css'
 import React from 'react'
 
 export default class Carosel extends React.Component {
-    constructor(){
-        super()
-    }
-    
+
     componentDidMount(){
-        let arr = [0,1,2];
-        console.log(this.carosel.children.length);
-        /**
-         * (0 - 1 - 2) -> (1 - 2 - 0) -> (2 - 0 - 1) 顺时针
-         * 
-         */
+        // console.log(this.carosel.children.length);
     }
 
     render(){

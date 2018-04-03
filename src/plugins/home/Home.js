@@ -5,36 +5,23 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {setName} from '../../store/action'
 import Carosel from "../../components/Carosel"
-import Utils from '../../utils/Utils'
+import Auth from '../../components/Auth'
+import Myheader from '../../components/Header'
 
 import {
   Layout,
   Breadcrumb,
   Button,
-  Input,
   Row
 } from 'antd'
-const {Header, Content, Footer} = Layout
+const { Content, Footer} = Layout
 
-class Home extends Component {
+class Home extends Auth {
   static propTypes = {
     name: PropTypes.string
   }
   
-  constructor() {
-    super();
-    this.state = {
-      name: ''
-    }
-  }
-
-  handleChange(event) {
-    this.setState({name: event.target.value})
-  }
-
   handleClick(v){
-    // console.log(setName)
-    // setName('hello world');
     this.props.setName('hello world')
   }
 
@@ -42,10 +29,7 @@ class Home extends Component {
     const {name} = this.props
     return (
       <Layout>
-        <Header style={{
-          background: '#fff',
-          padding: 0
-        }}/>
+        <Myheader />
         <Content style={{
           margin: '0 16px'
         }}>
@@ -64,6 +48,10 @@ class Home extends Component {
             <Carosel />
             <p>{name}</p>
             <Button onClick={this.handleClick.bind(this)}>click</Button>
+            <Row>
+              {this.state.token ? 'hello world' : ''}
+            </Row>
+            <Button type="primary" onClick={() => window.localStorage.removeItem('token')}>删除token</Button>
           </Row>
         </Content>
         <Footer style={{

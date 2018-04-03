@@ -2,8 +2,7 @@ import './Error.css';
 
 import React, { Component } from 'react';
 
-import { Layout, Breadcrumb } from 'antd';
-const { Header, Content, Footer } = Layout;
+import { Layout } from 'antd';
 
 class Error extends Component {
   render() {

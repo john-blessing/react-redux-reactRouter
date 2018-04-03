@@ -4,7 +4,6 @@ import {withRouter} from "react-router-dom";
 
 import { Layout, Menu, Icon } from 'antd';
 const { Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 
 class Sidebar extends Component {
   constructor(){
@@ -19,7 +18,8 @@ class Sidebar extends Component {
   }
   
   goRouter(item, key, keypath){
-    if(item.key == 2){
+    
+    if(window.parseInt(item.key) === 2){
       this.props.history.push('/about')
     } else {
       this.props.history.push('/home')
