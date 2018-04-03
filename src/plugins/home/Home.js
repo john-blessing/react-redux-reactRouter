@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {setName} from '../../store/action'
 import Carosel from "../../components/Carosel"
 import Auth from '../../components/Auth'
-import Myheader from '../../components/Header'
+import Myheader from '../../components/header/Header'
 
 import {
   Layout,
