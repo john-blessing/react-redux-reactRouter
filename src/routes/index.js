@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom
 
 import asyncComponent from '../components/AsyncComponent';
 import {Layout} from 'antd';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/sidebar/Sidebar';
 const Home = asyncComponent(() => import('../plugins/home/Home'));
 const Error = asyncComponent(() => import('../plugins/error/Error'));
 const About = asyncComponent(() => import('../plugins/about/About'));

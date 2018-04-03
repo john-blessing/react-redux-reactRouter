@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {setName} from '../../store/action'
-import Carosel from "../../components/Carosel"
+import Carosel from "../../components/carosel/Carosel"
 import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
 

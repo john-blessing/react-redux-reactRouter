@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {setName} from '../store/action'
+import {setName} from '../../store/action'
 import {
     Layout,
   } from 'antd'
