@@ -8,6 +8,7 @@ const { Header, Content, Footer } = Layout;
 class About extends Component {
   componentDidMount(){
     window.localStorage.setItem('token', Math.random().toString(36).substr(6))
+    console.log(this.props)
   }
   render() {
     return (

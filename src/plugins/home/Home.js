@@ -24,7 +24,10 @@ class Home extends Auth {
   handleClick(v){
     this.props.setName('hello world')
   }
-
+  gotoAbout(){
+    console.log(this.props);
+    this.props.history.replace('/about/10')
+  }
   render() {
     const {name} = this.props
     return (
@@ -52,6 +55,7 @@ class Home extends Auth {
               {this.state.token ? 'hello world' : ''}
             </Row>
             <Button type="primary" onClick={() => window.localStorage.removeItem('token')}>删除token</Button>
+            <Button type="primary" onClick={this.gotoAbout.bind(this)}>jump to About </Button>
           </Row>
         </Content>
         <Footer style={{

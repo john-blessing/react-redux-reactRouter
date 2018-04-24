@@ -32,7 +32,7 @@ export default class Myrouter extends React.Component {
                             <Switch>
                                 <Route exact path = '/' component = {Home} /> 
                                 <Route path = "/home" component = {Home} /> 
-                                <Route path = "/about" component = {About} /> 
+                                <Route path = "/about/:id" component = {About} ></Route> 
                                 <Route path = "/404" component = {Error} />
                                 <Redirect from="*" to="/404" />
                             </Switch>
