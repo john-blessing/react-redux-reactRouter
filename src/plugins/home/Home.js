@@ -1,6 +1,6 @@
 import './Home.css'
 
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {setName} from '../../store/action'
@@ -66,4 +66,4 @@ class Home extends Auth {
 
 const mapStateToProps = state => ({name: state.userInfo.name})
 
-export default connect(mapStateToProps, {setName})(Home);
+export default connect(mapStateToProps, { setName })(Home);

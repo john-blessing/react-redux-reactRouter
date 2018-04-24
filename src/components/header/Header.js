@@ -21,4 +21,4 @@ class Myheader extends React.Component {
 
 const mapStateToProps = state => ({name: state.userInfo.name})
 
-export default connect(mapStateToProps, {setName})(Header);
+export default connect(mapStateToProps, {setName})(Myheader);
