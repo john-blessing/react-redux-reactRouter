@@ -1,5 +1,6 @@
 
 import React from 'react'
+import Loadable from 'react-loadable';
 import { Provider } from 'react-redux'
 import mystore from '../store'
 import { createStore, applyMiddleware } from 'redux'
@@ -7,14 +8,25 @@ import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-
-import asyncComponent from '../components/AsyncComponent';
-import { Layout } from 'antd';
+import Loading from '../components/Loading';
 import Sidebar from '../components/sidebar/Sidebar';
-const Home = asyncComponent(() => import('../plugins/home/Home'));
-const Error = asyncComponent(() => import('../plugins/error/Error'));
-const About = asyncComponent(() => import('../plugins/about/About'));
 
+import { Layout } from 'antd';
+
+const Home = Loadable({
+    loader: () => import('../plugins/home/Home'),
+    loading: Loading
+})
+
+const Error = Loadable({
+    loader: () => import('../plugins/error/Error'),
+    loading: Loading
+})
+
+const About = Loadable({
+    loader: () => import('../plugins/about/About'),
+    loading: Loading
+})
 
 const middleware = [thunk];
 if (process.env.NODE_ENV !== 'production') {
@@ -24,15 +36,16 @@ if (process.env.NODE_ENV !== 'production') {
 const store = createStore(mystore, applyMiddleware(...middleware))
 
 const routes = [{
-    path:'/',
+    path: '/',
     component: Home
-},{
+}, {
     path: '/home',
     component: Home
 }, {
     path: '/about',
     component: About
 }]
+
 export default class Myrouter extends React.Component {
     render() {
         return (<Provider store={store}>
