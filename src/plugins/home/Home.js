@@ -7,6 +7,7 @@ import {setName} from '../../store/action'
 import Carosel from "../../components/carosel/Carosel"
 import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
+import OpenModal from '../../components/OpenModal'
 
 import {
   Layout,
@@ -17,17 +18,28 @@ import {
 const { Content, Footer} = Layout
 
 class Home extends Auth {
-  static propTypes = {
-    name: PropTypes.string
+
+  constructor(){
+    super();
+    this.state = {
+      visible: false
+    }
   }
-  
+
   handleClick(v){
     this.props.setName('hello world')
   }
+
   gotoAbout(){
-    console.log(this.props);
-    this.props.history.replace('/about/10')
+    this.props.history.replace('/about/10/company')
   }
+
+  hanldelSetVisilbe(){
+    this.setState({
+      visible: true
+    })
+  }
+  
   render() {
     const {name} = this.props
     return (
@@ -56,6 +68,8 @@ class Home extends Auth {
             </Row>
             <Button type="primary" onClick={() => window.localStorage.removeItem('token')}>删除token</Button>
             <Button type="primary" onClick={this.gotoAbout.bind(this)}>jump to About </Button>
+            <Button onClick={this.hanldelSetVisilbe.bind(this)}>弹窗</Button>
+            <OpenModal visible={this.state.visible}></OpenModal>
           </Row>
         </Content>
         <Footer style={{
@@ -67,6 +81,10 @@ class Home extends Auth {
     );
   }
 }
+
+Home.propTypes = {
+  name: PropTypes.string
+};
 
 const mapStateToProps = state => ({name: state.userInfo.name})
 
