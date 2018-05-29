@@ -26,6 +26,9 @@ const routes = [{
     path: '/about/:id/company',
     component: About
 }, {
+    path: '/about',
+    component: About
+}, {
     path: '/error',
     component: Error
 }]
