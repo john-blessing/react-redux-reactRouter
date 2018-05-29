@@ -19,7 +19,7 @@ const About = Loadable({
 const routes = [{
     path: '/',
     component: Home
-}, {
+},{
     path: '/home',
     component: Home
 }, {

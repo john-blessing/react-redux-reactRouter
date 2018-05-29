@@ -2,8 +2,8 @@ import './Home.css'
 
 import React from 'react'
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux'
-import {setName} from '../../store/action'
+import { connect } from 'react-redux'
+import { setName } from '../../store/action'
 import Carosel from "../../components/carosel/Carosel"
 import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
@@ -15,33 +15,38 @@ import {
   Button,
   Row
 } from 'antd'
-const { Content, Footer} = Layout
+const { Content, Footer } = Layout
 
 class Home extends Auth {
 
-  constructor(){
+  constructor() {
     super();
     this.state = {
       visible: false
     }
   }
 
-  handleClick(v){
+  componentWillUnmount () {
+    fetch({
+      url: 'http://localhost:8999/frontEndLogger/'
+    })
+  }
+  handleClick(v) {
     this.props.setName('hello world')
   }
 
-  gotoAbout(){
+  gotoAbout() {
     this.props.history.replace('/about/10/company')
   }
 
-  hanldelSetVisilbe(){
+  hanldelSetVisilbe() {
     this.setState({
       visible: true
     })
   }
-  
+
   render() {
-    const {name} = this.props
+    const { name } = this.props
     return (
       <Layout>
         <Myheader />
@@ -86,6 +91,6 @@ Home.propTypes = {
   name: PropTypes.string
 };
 
-const mapStateToProps = state => ({name: state.userInfo.name})
+const mapStateToProps = state => ({ name: state.userInfo.name })
 
 export default connect(mapStateToProps, { setName })(Home);
