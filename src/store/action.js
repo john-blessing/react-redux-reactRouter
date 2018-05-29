@@ -1,8 +1,9 @@
-export const SET_NAME = 'SET_NAME'
-
 // actions
-const receiveName = (text) => ({
-    type: SET_NAME,
+
+const types = require('./types')
+
+export const receiveName = (text) => ({
+    type: types.SET_NAME,
     text
 })
 
