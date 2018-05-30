@@ -1,6 +1,8 @@
 import './Home.css'
+import api from '../../api/config'
 
 import React from 'react'
+import cookie from 'react-cookies'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { setName } from '../../store/action'
@@ -26,10 +28,12 @@ class Home extends Auth {
     }
   }
 
+  componentDidMount () {
+    this.queryAllStudent()
+  }
+
   componentWillUnmount () {
-    fetch({
-      url: 'http://localhost:8999/frontEndLogger/'
-    })
+  
   }
   handleClick(v) {
     this.props.setName('hello world')
@@ -45,6 +49,18 @@ class Home extends Auth {
     })
   }
 
+  queryAllStudent () {
+    api.get('findAllStudent')
+    .then(res => {
+      let data = res.data
+      if (data.res_code < 0) {
+        this.props.history.push('/login')
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
   render() {
     const { name } = this.props
     return (
