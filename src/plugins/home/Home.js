@@ -11,6 +11,8 @@ import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
 import OpenModal from '../../components/OpenModal'
 
+import Sidebar from '../../components/sidebar/Sidebar'
+
 import {
   Layout,
   Breadcrumb,
@@ -28,12 +30,12 @@ class Home extends Auth {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.queryAllStudent()
   }
 
-  componentWillUnmount () {
-  
+  componentWillUnmount() {
+
   }
   handleClick(v) {
     this.props.setName('hello world')
@@ -49,55 +51,55 @@ class Home extends Auth {
     })
   }
 
-  queryAllStudent () {
+  queryAllStudent() {
     api.get('findAllStudent')
-    .then(res => {
-      let data = res.data
-      if (data.res_code < 0) {
-        this.props.history.push('/login')
-      }
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then(res => {
+        let data = res.data
+        if (data.res_code < 0) {
+          this.props.history.push('/login')
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
   render() {
     const { name } = this.props
     return (
-      <Layout>
-        <Myheader />
-        <Content style={{
-          margin: '0 16px'
-        }}>
-          <Breadcrumb style={{
-            margin: '16px 0'
+      <Layout style={{ minHeight: '100vh' }} >
+        <Sidebar />
+        <Layout>
+          <Myheader />
+          <Content style={{
+            margin: '0 16px'
           }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <Row
-            style={{
-              padding: 24,
-              background: '#fff',
-              minHeight: 360
+            <Breadcrumb style={{
+              margin: '16px 0'
             }}>
-            <Carosel />
-            <p>{name}</p>
-            <Button onClick={this.handleClick.bind(this)}>click</Button>
-            <Row>
-              {this.state.token ? 'hello world' : ''}
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <Row
+              style={{
+                padding: 24,
+                background: '#fff',
+                minHeight: 360
+              }}>
+              <Carosel />
+              <p>{name}</p>
+              <Row>
+                {this.state.token ? 'hello world' : ''}
+              </Row>
+              <Button onClick={this.hanldelSetVisilbe.bind(this)}>弹窗</Button>
+              <OpenModal visible={this.state.visible}></OpenModal>
             </Row>
-            <Button type="primary" onClick={() => window.localStorage.removeItem('token')}>删除token</Button>
-            <Button type="primary" onClick={this.gotoAbout.bind(this)}>jump to About </Button>
-            <Button onClick={this.hanldelSetVisilbe.bind(this)}>弹窗</Button>
-            <OpenModal visible={this.state.visible}></OpenModal>
-          </Row>
-        </Content>
-        <Footer style={{
-          textAlign: 'center'
-        }}>
-          Ant Design ©2016 Created by Ant UED
+          </Content>
+          <Footer style={{
+            textAlign: 'center'
+          }}>
+            Ant Design ©2016 Created by Ant UED
         </Footer>
+        </Layout>
       </Layout>
     );
   }
