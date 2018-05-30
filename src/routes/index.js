@@ -8,8 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Layout } from 'antd'
 
 import mystore from '../store'
-import contentPages from './contentPage'
-import fullPages from './fullPage'
+import routes from './routes'
 import Sidebar from '../components/sidebar/Sidebar'
 
 const middleware = [thunk];
@@ -19,14 +18,14 @@ if (process.env.NODE_ENV !== 'production') {
 
 const store = createStore(mystore, applyMiddleware(...middleware))
 
-class ContentPage extends React.Component {
+export default class Myrouter extends React.Component {
     render() {
         return (<Provider store={store}>
             <Router>
                 <Layout style={{ minHeight: '100vh' }} >
-                    <Sidebar />
+                    {/* <Sidebar /> */}
                     <Switch>
-                        {contentPages.map((route, i) => <Route exact key={i} path={route.path} component={route.component} />)}
+                        {routes.map((route, i) => <Route exact key={i} path={route.path} component={route.component} />)}
                     </Switch>
                 </Layout>
             </Router>
@@ -34,42 +33,42 @@ class ContentPage extends React.Component {
     }
 }
 
-class FullPage extends React.Component {
-    render () {
-        return (
-            <Provider store={store}>
-                <Router>
-                    <Layout style={{ minHeight: '100vh' }} >
-                        <Switch>
-                            {fullPages.map((route, i) => <Route exact key={i} path={route.path} component={route.component} />)}
-                        </Switch>
-                    </Layout>
-                </Router>
-            </Provider>
-        )
-    }
-}
+// class FullPage extends React.Component {
+//     render () {
+//         return (
+//             <Provider store={store}>
+//                 <Router>
+//                     <Layout style={{ minHeight: '100vh' }} >
+//                         <Switch>
+//                             {fullPages.map((route, i) => <Route exact key={i} path={route.path} component={route.component} />)}
+//                         </Switch>
+//                     </Layout>
+//                 </Router>
+//             </Provider>
+//         )
+//     }
+// }
 
-export default class Myrouter extends React.Component {
-    constructor () {
-        super()
-        this.isFull = false
-    }
+// export default class Myrouter extends React.Component {
+//     constructor () {
+//         super()
+//         this.isFull = false
+//     }
 
-    componentDidMount () {
+//     componentDidMount () {
      
-    }
+//     }
 
-    render () {
+//     render () {
 
-        if(window.location.pathname === '/login'){
-            this.isFull = false
-        } else {
-            this.isFull = true
-        }
+//         if(window.location.pathname === '/login'){
+//             this.isFull = false
+//         } else {
+//             this.isFull = true
+//         }
 
-        return (
-            this.isFull ? <ContentPage /> : <FullPage />
-        )
-    }
-}
+//         return (
+//             this.isFull ? <ContentPage /> : <FullPage />
+//         )
+//     }
+// }

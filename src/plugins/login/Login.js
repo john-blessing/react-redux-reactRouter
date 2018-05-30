@@ -1,4 +1,6 @@
 import './Login.css'
+import api from '../../api/config'
+import cookie from 'react-cookies'
 
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
@@ -12,6 +14,18 @@ class Login extends React.Component {
       if (!err) {
         console.log('Received values of form: ', values);
       }
+      api.post('login', {
+        username: values.userName,
+        password: values.password
+      })
+      .then(res => {
+        let data = res.data
+        this.props.history.push('/')
+        cookie.save('token', data.msg.token)
+      })
+      .catch(err => {
+        console.log(err)
+      })
     });
   }
 

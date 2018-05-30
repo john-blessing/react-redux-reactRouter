@@ -16,15 +16,23 @@ const About = Loadable({
     loading: Loading
 })
 
+const Login = Loadable({
+    loader: () => import('../plugins/login/Login'),
+    loading: Loading
+})
+
 const routes = [{
     path: '/',
     component: Home
-},{
+}, {
     path: '/home',
     component: Home
 }, {
     path: '/about/:id/company',
     component: About
+}, {
+    path: '/login',
+    component: Login
 }, {
     path: '/about',
     component: About
