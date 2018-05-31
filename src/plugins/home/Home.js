@@ -37,6 +37,7 @@ class Home extends Auth {
   componentWillUnmount() {
 
   }
+
   handleClick(v) {
     this.props.setName('hello world')
   }
@@ -63,6 +64,7 @@ class Home extends Auth {
         console.log(err)
       })
   }
+  
   render() {
     const { name } = this.props
     return (
