@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
+import { Layout } from 'antd'
 import mystore from '../store'
 import routes from './routes'
 
@@ -20,9 +20,11 @@ export default class Myrouter extends React.Component {
     render() {
         return (<Provider store={store}>
             <Router>
-                <Switch>
-                    {routes.map((route, i) => <Route exact key={i} path={route.path} component={route.component} />)}
-                </Switch>
+                <Layout>
+                    <Switch>
+                        {routes.map((route, i) => <Route exact key={i} path={route.path} component={route.component} />)}
+                    </Switch>
+                </Layout>
             </Router>
         </Provider>)
     }

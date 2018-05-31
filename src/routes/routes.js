@@ -1,5 +1,15 @@
+import React from 'react'
 import Loadable from 'react-loadable';
-import Loading from '../components/Loading';
+
+const Loading = ({ error, pastDelay }) => {
+    if (error) {
+        return <div>Error!</div>;
+    } else if (pastDelay) {
+        return <div>Loading...</div>;
+    } else {
+        return null;
+    }
+}
 
 const Home = Loadable({
     loader: () => import('../plugins/home/Home'),

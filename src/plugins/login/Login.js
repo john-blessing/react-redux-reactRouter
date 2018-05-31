@@ -20,7 +20,7 @@ class Login extends React.Component {
       })
       .then(res => {
         let data = res.data
-        this.props.history.push('/')
+        this.props.history.push('/home')
         cookie.save('token', data.msg.token)
       })
       .catch(err => {
