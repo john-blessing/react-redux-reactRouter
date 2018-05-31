@@ -2,29 +2,35 @@ import './Home.css'
 import api from '../../api/config'
 
 import React from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import { Editor } from 'react-draft-wysiwyg'
+import { EditorState, convertToRaw } from 'draft-js'
+import draftToHtml from 'draftjs-to-html'
 import { connect } from 'react-redux'
 import { setName } from '../../store/action'
 import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
-import OpenModal from '../../components/OpenModal'
 
 import Sidebar from '../../components/sidebar/Sidebar'
 
 import {
   Layout,
   Breadcrumb,
+  Row,
   Button,
-  Row
+  message,
+  Input
 } from 'antd'
 const { Content, Footer } = Layout
 
 class Home extends Auth {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      visible: false
+      visible: false,
+      editorState: EditorState.createEmpty(),
+      inputVal: ''
     }
   }
 
@@ -63,8 +69,35 @@ class Home extends Auth {
       })
   }
 
+  onEditorStateChange(editorState) {
+    this.setState({
+      editorState
+    });
+  };
+
+  handleSave() {
+    api.put(`updateArticle?a_id=${this.state.inputVal}`, {
+      title: 'hello world',
+      content: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
+    })
+      .then(res => {
+        let data = res.data
+        if(data.res_code > 0){
+          message.success('保存成功')
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  getVal (e) {
+    this.setState({
+      inputVal: e.target.value
+    })
+  }
   render() {
-    const { name } = this.props
+    const { editorState } = this.state;
     return (
       <Layout style={{ minHeight: '100vh' }} >
         <Sidebar />
@@ -85,7 +118,22 @@ class Home extends Auth {
                 background: '#fff',
                 minHeight: 360
               }}>
-              Home
+              <Row>
+                <Editor
+                  editorState={editorState}
+                  toolbarClassName="toolbarClassName"
+                  wrapperClassName="wrapperClassName"
+                  editorClassName="editorClassName"
+                  onEditorStateChange={this.onEditorStateChange.bind(this)}
+                >
+                </Editor>
+              </Row>
+              <Row style={{marginTop: '15px'}}>
+                分页: 第<Input style={{width: '200px'}} placeholder="请输入" value={this.state.inputVal} onChange={this.getVal.bind(this)}/>页
+              </Row>
+              <Row style={{marginTop: '15px'}}>
+                <Button type="primary" onClick={this.handleSave.bind(this)}>保存</Button>
+              </Row>
             </Row>
           </Content>
           <Footer style={{
