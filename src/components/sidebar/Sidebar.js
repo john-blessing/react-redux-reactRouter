@@ -10,6 +10,14 @@ class Sidebar extends Component {
     super();
     this.state = {
       collapsed: false,
+      menuList: [{
+        key: '/home',
+        label: 'Home'
+      }, {
+        key: '/about',
+        label: 'About'
+      }],
+      currentMenu: ''
     };
   }
 
@@ -18,14 +26,13 @@ class Sidebar extends Component {
   }
   
   goRouter(item, key, keypath){
-    
-    if(window.parseInt(item.key) === 2){
-      this.props.history.push('/about')
-    } else {
-      this.props.history.push('/home')
-    }
+    this.props.history.push(item.key)
   }
-
+  componentDidMount () {
+    this.setState({
+      currentMenu: this.props.history.location.pathname
+    })
+  }
   render() {
     return (
         <Sider
@@ -34,34 +41,15 @@ class Sidebar extends Component {
         onCollapse={this.onCollapse.bind(this)}
       >
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.goRouter.bind(this)}>
-          <Menu.Item key="1">
-            <Icon type="pie-chart" />
-            <span>Home</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Icon type="desktop" />
-            <span>About</span>
-          </Menu.Item>
-          {/* <SubMenu
-            key="sub1"
-            title={<span><Icon type="user" /><span>User</span></span>}
-          >
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            key="sub2"
-            title={<span><Icon type="team" /><span>Team</span></span>}
-          >
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
-          </SubMenu>
-          <Menu.Item key="9">
-            <Icon type="file" />
-            <span>File</span>
-          </Menu.Item> */}
+        <Menu theme="dark" defaultSelectedKeys={['1']} selectedKeys={[this.state.currentMenu]} mode="inline" onClick={this.goRouter.bind(this)}>
+          {
+            this.state.menuList.map(item => {
+              return  <Menu.Item key={item.key}>
+                <Icon type="pie-chart" />
+                <span>{item.label}</span>
+              </Menu.Item>
+            })
+          }
         </Menu>
       </Sider>
     );

@@ -2,7 +2,6 @@ import './Home.css'
 import api from '../../api/config'
 
 import React from 'react'
-import cookie from 'react-cookies'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { setName } from '../../store/action'

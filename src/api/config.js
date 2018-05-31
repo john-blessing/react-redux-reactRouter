@@ -1,5 +1,4 @@
 import axios from 'axios'
-import cookie from 'react-cookies'
 
 const baseURL = 'http://localhost:8999/api/v1.0/'
 
@@ -21,7 +20,6 @@ axios.interceptors.request.use(function (config) {
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
     // Do something with response data
-    console.log(response)
     return response;
 }, function (error) {
     // Do something with response error

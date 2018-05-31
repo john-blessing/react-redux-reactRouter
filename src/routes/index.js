@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Layout } from 'antd'
 
 import mystore from '../store'
 import routes from './routes'
