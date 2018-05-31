@@ -5,7 +5,6 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { setName } from '../../store/action'
-import Carosel from "../../components/carosel/Carosel"
 import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
 import OpenModal from '../../components/OpenModal'
@@ -63,7 +62,7 @@ class Home extends Auth {
         console.log(err)
       })
   }
-  
+
   render() {
     const { name } = this.props
     return (
@@ -86,13 +85,7 @@ class Home extends Auth {
                 background: '#fff',
                 minHeight: 360
               }}>
-              <Carosel />
-              <p>{name}</p>
-              <Row>
-                {this.state.token ? 'hello world' : ''}
-              </Row>
-              <Button onClick={this.hanldelSetVisilbe.bind(this)}>弹窗</Button>
-              <OpenModal visible={this.state.visible}></OpenModal>
+              Home
             </Row>
           </Content>
           <Footer style={{
