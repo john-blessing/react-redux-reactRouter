@@ -10,9 +10,7 @@ import { connect } from 'react-redux'
 import { setName } from '../../store/action'
 import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
-
 import Sidebar from '../../components/sidebar/Sidebar'
-
 import {
   Layout,
   Breadcrumb,
@@ -21,6 +19,7 @@ import {
   message,
   Input
 } from 'antd'
+
 const { Content, Footer } = Layout
 
 class Home extends Auth {

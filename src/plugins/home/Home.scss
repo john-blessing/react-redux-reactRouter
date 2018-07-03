@@ -5,7 +5,10 @@
 
 .editorClassName .public-DraftEditor-content{
     border: 1px solid #eee;
-    width: 375px;
+    // width: 375px;
     height: 667px;
-    overflow: hidden;
+    // overflow: hidden;
+    img{
+        width: 100%;
+    }
 }

@@ -1,17 +1,17 @@
 // mutations
-
 const { combineReducers } = require('redux')
-const types = require('./types')
 
-// 用户信息
+const actions = {}
+
 const userInfo = (state = {name: 'tony'}, action) => {
     switch (action.type) {
-        case types.SET_NAME:
-            return {...state, ...{ name: action.text }}
+        case 'SET_NAME':
+        return {state, ...{name: action.value}}
         default:
-            return state;
+        return state
     }
 }
 
-
-export default combineReducers({ userInfo })
+export default combineReducers({ 
+    userInfo
+})
