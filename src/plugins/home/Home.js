@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import { Editor } from 'react-draft-wysiwyg'
 import { EditorState, convertToRaw } from 'draft-js'
 import draftToHtml from 'draftjs-to-html'
-import { connect } from 'react-redux'
-import { setName } from '../../store/action'
 import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
@@ -150,6 +148,5 @@ Home.propTypes = {
   name: PropTypes.string
 };
 
-const mapStateToProps = state => ({ name: state.userInfo.name })
 
-export default connect(mapStateToProps, { setName })(Home);
+export default Home;
