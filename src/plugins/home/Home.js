@@ -99,7 +99,7 @@ class Home extends Auth {
       <Layout style={{ minHeight: '100vh' }} >
         <Sidebar />
         <Layout>
-          <Myheader />
+          <Myheader name="header"/>
           <Content style={{
             margin: '0 16px'
           }}>

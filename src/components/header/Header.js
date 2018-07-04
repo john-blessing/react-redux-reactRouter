@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {setName} from '../../store/action'
 import {
-    Layout,
+    Layout, Divider,
   } from 'antd'
   const {Header} = Layout
 
@@ -14,7 +14,7 @@ class Myheader extends React.Component {
             <Header style={{
                 background: '#fff',
                 padding: 0
-              }}/>
+            }} />
         )
     }
 }
