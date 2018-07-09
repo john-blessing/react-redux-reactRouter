@@ -1,6 +1,4 @@
 import './Home.css'
-import api from '../../api/config'
-import axios from 'axios'
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -9,11 +7,7 @@ import Myheader from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
 import {
   Layout,
-  Breadcrumb,
-  Row,
-  Button,
-  message,
-  Input
+  Row
 } from 'antd'
 
 const { Content, Footer } = Layout
@@ -21,11 +15,7 @@ const { Content, Footer } = Layout
 class Home extends Auth {
 
   componentDidMount() {
-    
-  }
-
-  componentWillUnmount() {
-
+    console.log(this.refs.h1) 
   }
 
   render() {
@@ -45,7 +35,7 @@ class Home extends Auth {
                 marginTop: 15
               }}>
               <Row>
- 
+                <h1 ref="h1">111</h1>
               </Row>
             </Row>
           </Content>
