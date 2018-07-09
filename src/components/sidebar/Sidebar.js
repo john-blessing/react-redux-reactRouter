@@ -12,10 +12,12 @@ class Sidebar extends Component {
       collapsed: false,
       menuList: [{
         key: '/home',
-        label: 'Home'
+        label: '首页',
+        icon: 'team'
       }, {
         key: '/about',
-        label: 'About'
+        label: 'About',
+        icon: 'solution'
       }],
       currentMenu: ''
     };
@@ -28,11 +30,13 @@ class Sidebar extends Component {
   goRouter(item, key, keypath){
     this.props.history.push(item.key)
   }
+
   componentDidMount () {
     this.setState({
       currentMenu: this.props.history.location.pathname
     })
   }
+
   render() {
     return (
         <Sider
@@ -45,7 +49,7 @@ class Sidebar extends Component {
           {
             this.state.menuList.map(item => {
               return  <Menu.Item key={item.key}>
-                <Icon type="pie-chart" />
+                <Icon type={item.icon} />
                 <span>{item.label}</span>
               </Menu.Item>
             })

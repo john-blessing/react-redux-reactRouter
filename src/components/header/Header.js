@@ -4,19 +4,17 @@ import {setName} from '../../store/action'
 import {
     Layout, Divider,
   } from 'antd'
-  const {Header} = Layout
+const {Header} = Layout
 
 class Myheader extends React.Component {
-
-
-    render(){
-        return (
-            <Header style={{
-                background: '#fff',
-                padding: 0
-            }} />
-        )
-    }
+  render(){
+    return (
+      <Header style={{
+          background: '#fff',
+          padding: 0
+      }} />
+    )
+  }
 }
 
 const mapStateToProps = state => ({name: state.userInfo.name})
