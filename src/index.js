@@ -8,7 +8,7 @@ import Myrouter from './routes';
 import registerServiceWorker from './registerServiceWorker';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:6688');
+const socket = io('http://localhost:8999');
 
 socket.on('connect', async () => {
   socket.emit('join', {message: 'ok'})

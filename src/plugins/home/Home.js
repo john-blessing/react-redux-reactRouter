@@ -32,7 +32,7 @@ class Home extends Auth {
                 padding: 24,
                 background: '#fff',
                 minHeight: 360,
-                marginTop: 15
+                marginTop: 18
               }}>
               <Row>
                 <h1 ref="h1">111</h1>

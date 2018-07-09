@@ -9,7 +9,7 @@ class Sidebar extends Component {
   constructor(){
     super();
     this.state = {
-      collapsed: false,
+      collapsed: true,
       menuList: [{
         key: '/home',
         label: '首页',
