@@ -1,6 +1,7 @@
 import React from 'react'
 
 import * as user from '../../api/user'
+import StoreAdaper from '../../store/StoreAdaper';
 
 import {
     Layout, Row, Col, Button, message
@@ -15,7 +16,7 @@ class Myheader extends React.Component {
       let data = res.data
       if (data.content) {
         window.localStorage.setItem("isLogin", 0)
-        window.location.href = '/login'
+        this.props.history.push('/login')
       } else {
         message.error("登出失败")
       }
@@ -38,4 +39,4 @@ class Myheader extends React.Component {
   }
 }
 
-export default Myheader;
+export default StoreAdaper(Myheader);

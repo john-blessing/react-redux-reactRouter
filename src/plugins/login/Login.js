@@ -18,7 +18,7 @@ class Login extends React.Component {
         let data = res.data
         if (data.res_code === 200){
           message.success("登录成功！");
-          this.props.dispath('SET_USER_INFO', data.content)
+          this.props.commit('SET_USER_INFO', data.content)
           this.props.history.push('/home')
           window.localStorage.setItem("isLogin", 1)
         } else {

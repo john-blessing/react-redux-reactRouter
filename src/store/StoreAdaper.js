@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as action from './action'
 import {withRouter} from "react-router-dom";
 
 export default function StoreAdaper(NeedComponent) {
@@ -9,7 +8,7 @@ export default function StoreAdaper(NeedComponent) {
       return <NeedComponent {...this.props} />
     }
   }
-  return connect(state => state, { dispath: (type, value) => (dispatch, getState) => {
+  return connect(state => state, { commit: (type, value) => (dispatch, getState) => {
     dispatch({
         type,
         value
