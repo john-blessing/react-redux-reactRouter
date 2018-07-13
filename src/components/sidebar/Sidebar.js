@@ -3,9 +3,10 @@ import './Sidebar.css'
 
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
-import {withRouter} from "react-router-dom";
 
 import { Layout, Menu, Icon } from 'antd';
+import StoreAdaper from '../../store/StoreAdaper';
+
 const { Sider } = Layout;
 
 class Sidebar extends Component {
@@ -41,7 +42,7 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { avator } = this.props.userInfo
+    const { avator } = this.props.base.userInfo
     return (
         <Sider
         collapsible
@@ -66,6 +67,4 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = state => ({ userInfo: state.base.userInfo })
-
-export default connect(mapStateToProps)(withRouter(Sidebar));
+export default StoreAdaper(Sidebar)

@@ -18,7 +18,9 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
     // Do something with response data
     if (response.data.res_code === 500) {
-       window.location.href = '/login'
+        if(window.location.pathname.indexOf('login') < -1) {
+            window.location.href = '/login'
+        }
     }
     return response;
 }, function (error) {

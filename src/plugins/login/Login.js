@@ -1,8 +1,7 @@
 import './Login.css'
 import * as user from '../../api/user'
 
-import { connect } from 'react-redux'
-import { setUserInfo } from '../../store/action'
+import StoreAdaper from '../../store/StoreAdaper';
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 const FormItem = Form.Item;
@@ -19,7 +18,7 @@ class Login extends React.Component {
         let data = res.data
         if (data.res_code === 200){
           message.success("登录成功！");
-          this.props.setUserInfo(data.content)
+          this.props.dispath('SET_USER_INFO', data.content)
           this.props.history.push('/home')
           window.localStorage.setItem("isLogin", 1)
         } else {
@@ -67,8 +66,4 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = function (state) {
-  return state
-}
-
-export default Form.create()(connect(mapStateToProps, { setUserInfo })(Login));
+export default Form.create()(StoreAdaper(Login));
