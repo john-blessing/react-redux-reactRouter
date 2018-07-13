@@ -1,4 +1,7 @@
 
+import './Sidebar.css'
+
+import { connect } from 'react-redux'
 import React, { Component } from 'react';
 import {withRouter} from "react-router-dom";
 
@@ -38,13 +41,16 @@ class Sidebar extends Component {
   }
 
   render() {
+    const { avator } = this.props.userInfo
     return (
         <Sider
         collapsible
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse.bind(this)}
       >
-        <div className="logo" />
+        <div className="logo">
+          <img src={avator} className="avator"/>
+        </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} selectedKeys={[this.state.currentMenu]} mode="inline" onClick={this.goRouter.bind(this)}>
           {
             this.state.menuList.map(item => {
@@ -60,4 +66,6 @@ class Sidebar extends Component {
   }
 }
 
-export default withRouter(Sidebar);
+const mapStateToProps = state => ({ userInfo: state.base.userInfo })
+
+export default connect(mapStateToProps)(withRouter(Sidebar));

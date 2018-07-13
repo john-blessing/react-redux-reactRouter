@@ -2,7 +2,6 @@ import './Home.css'
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import Auth from '../../components/Auth'
 import Myheader from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
 import {
@@ -10,20 +9,24 @@ import {
   Row
 } from 'antd'
 
+import * as user from '../../api/user'
+
 const { Content, Footer } = Layout
 
-class Home extends Auth {
-
-  componentDidMount() {
-    console.log(this.refs.h1) 
+class Home extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      userInfo: null
+    }
   }
 
   render() {
     return (
       <Layout style={{ minHeight: '100vh' }} >
-        <Sidebar />
+        <Sidebar {...this.state.userInfo}/>
         <Layout>
-          <Myheader name="header"/>
+          <Myheader/>
           <Content style={{
             margin: '0 16px'
           }}>

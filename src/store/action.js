@@ -1,6 +1,6 @@
-export const setName = (value) => (dispatch, getState) => {
+export const setUserInfo = (value) => (dispatch, getState) => {
     dispatch({
-        type: 'SET_NAME',
+        type: 'SET_USER_INFO',
         value
     })
 }

@@ -1,9 +1,10 @@
 import './Login.css'
-import api from '../../api/config'
-import cookie from 'react-cookies'
+import * as user from '../../api/user'
 
+import { connect } from 'react-redux'
+import { setUserInfo } from '../../store/action'
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 const FormItem = Form.Item;
 
 class Login extends React.Component {
@@ -14,17 +15,16 @@ class Login extends React.Component {
       if (!err) {
         console.log('Received values of form: ', values);
       }
-      api.post('login', {
-        username: values.userName,
-        password: values.password
-      })
-      .then(res => {
+      user.login(values.userName, values.password).then(res => {
         let data = res.data
-        this.props.history.push('/home')
-        cookie.save('token', data.msg.token)
-      })
-      .catch(err => {
-        console.log(err)
+        if (data.res_code === 200){
+          message.success("登录成功！");
+          this.props.setUserInfo(data.content)
+          this.props.history.push('/home')
+          window.localStorage.setItem("isLogin", 1)
+        } else {
+          message.error(data.content);
+        }
       })
     });
   }
@@ -35,6 +35,7 @@ class Login extends React.Component {
       <Form onSubmit={this.handleSubmit} className="login-form">
         <FormItem>
           {getFieldDecorator('userName', {
+            initialValue: "jj4f",
             rules: [{ required: true, message: 'Please input your username!' }],
           })(
             <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
@@ -42,6 +43,7 @@ class Login extends React.Component {
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
+            initialValue: "199302082214",
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
             <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
@@ -65,4 +67,8 @@ class Login extends React.Component {
   }
 }
 
-export default Form.create()(Login);
+const mapStateToProps = function (state) {
+  return state
+}
+
+export default Form.create()(connect(mapStateToProps, { setUserInfo })(Login));

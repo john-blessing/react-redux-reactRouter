@@ -1,8 +1,8 @@
 // mutations
-import userInfo from './user'
+import base from './base'
 
 const { combineReducers } = require('redux')
 
 export default combineReducers({ 
-    userInfo
+    base
 })
