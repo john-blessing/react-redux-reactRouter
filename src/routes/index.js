@@ -7,7 +7,6 @@ import { createLogger } from 'redux-logger'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Layout } from 'antd'
 import mystore from '../store'
-import cookie from 'react-cookies'
 import Loadable from 'react-loadable';
 import * as user from '../api/user'
 
@@ -72,6 +71,7 @@ class Myrouter extends React.Component {
                 <Route exact path="/home" component={Home} />
                 <Route path="/Login" component={Login} />
                 <Route path="/About" component={About} />
+                <Route path="/error" component={Error} />
                 <Route path="*" redirect="/home" />
             </Switch>
             </Layout>

@@ -9,8 +9,6 @@ import {
   Row
 } from 'antd'
 
-import * as user from '../../api/user'
-
 const { Content, Footer } = Layout
 
 class Home extends React.Component {

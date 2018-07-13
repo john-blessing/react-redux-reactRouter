@@ -1,7 +1,6 @@
 
 import './Sidebar.css'
 
-import { connect } from 'react-redux'
 import React, { Component } from 'react';
 
 import { Layout, Menu, Icon } from 'antd';
@@ -50,7 +49,7 @@ class Sidebar extends Component {
         onCollapse={this.onCollapse.bind(this)}
       >
         <div className="logo">
-          <img src={avator} className="avator"/>
+          <img src={avator} className="avator" alt="头像"/>
         </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} selectedKeys={[this.state.currentMenu]} mode="inline" onClick={this.goRouter.bind(this)}>
           {

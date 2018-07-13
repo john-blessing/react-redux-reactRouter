@@ -4,11 +4,10 @@ import * as user from '../../api/user'
 import StoreAdaper from '../../store/StoreAdaper';
 
 import {
-    Layout, Row, Col, Button, message
+    Layout, Row, Button, message
   } from 'antd'
+
 const {Header} = Layout
-
-
 
 class Myheader extends React.Component {
   handleLogout() {

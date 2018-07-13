@@ -5,13 +5,14 @@ import Myheader from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
 
 import { Layout, Breadcrumb, Row, Button } from 'antd';
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 class About extends Component {
   componentDidMount() {
 
   }
   handleClick () {
+    
   }
   render() {
     return (
