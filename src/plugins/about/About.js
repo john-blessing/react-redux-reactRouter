@@ -3,6 +3,7 @@ import './About.css';
 import React, { Component } from 'react';
 import Myheader from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
+import StoreAdaper from '../../store/StoreAdaper';
 
 import { Layout, Breadcrumb, Row, Button } from 'antd';
 const { Content, Footer } = Layout;
@@ -11,10 +12,13 @@ class About extends Component {
   componentDidMount() {
 
   }
+
   handleClick () {
-    
+    this.props.commit('SET_NAME', 'hello world')
   }
+  
   render() {
+    const { name } = this.props.base
     return (
       <Layout style={{ minHeight: '100vh' }} >
         <Sidebar />
@@ -31,6 +35,7 @@ class About extends Component {
                 background: '#fff',
                 minHeight: 360
               }}>
+              {name}
               <Button onClick={this.handleClick.bind(this)}>点击</Button>
             </Row>
           </Content>
@@ -44,4 +49,4 @@ class About extends Component {
 }
 
 
-export default About;
+export default StoreAdaper(About);

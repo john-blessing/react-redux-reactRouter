@@ -1,10 +1,14 @@
 const initialData = {
-  userInfo: {}
+  userInfo: {},
+  name: ''
 }
 
 const mutations = {
   'SET_USER_INFO': (state, payload) => {
-      return {state, ...{ userInfo: payload }}
+    return {...state, ...{ userInfo: payload }}
+  },
+  'SET_NAME': (state, payload) => {
+    return {...state, ...{ name: payload }}
   }
 }
 

@@ -30,7 +30,7 @@ class Myheader extends React.Component {
             padding: 0
         }}>
           <Row type="flex" justify="end" align="top">
-            <div style={{"marginRight": "16px"}}><Button onClick={this.handleLogout.bind(this)}>退出</Button></div>
+            <div style={{"marginRight": "16px"}}><Button type="dashed" onClick={this.handleLogout.bind(this)}>退出</Button></div>
           </Row>
         </Header>
       </Layout>
