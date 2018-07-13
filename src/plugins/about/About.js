@@ -5,7 +5,7 @@ import Myheader from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
 import StoreAdaper from '../../store/StoreAdaper';
 
-import { Layout, Breadcrumb, Row, Button } from 'antd';
+import { Layout, Row, Button } from 'antd';
 const { Content, Footer } = Layout;
 
 class About extends Component {
@@ -25,15 +25,12 @@ class About extends Component {
         <Layout>
           <Myheader />
           <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
             <Row
               style={{
                 padding: 24,
                 background: '#fff',
-                minHeight: 360
+                minHeight: 360,
+                marginTop: 18
               }}>
               {name}
               <Button onClick={this.handleClick.bind(this)}>点击</Button>

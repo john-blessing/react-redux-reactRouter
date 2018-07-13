@@ -3,7 +3,7 @@ import * as user from '../../api/user'
 
 import StoreAdaper from '../../store/StoreAdaper';
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
+import { Form, Icon, Input, Button, message } from 'antd'
 const FormItem = Form.Item;
 
 class Login extends React.Component {
